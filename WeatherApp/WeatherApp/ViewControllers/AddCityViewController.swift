@@ -95,7 +95,7 @@ extension AddCityViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         guard view.annotation === pinAnnotation else { return }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
-            mapView.selectAnnotation(view.annotation!, animated: false)
+            mapView.selectAnnotation(self.pinAnnotation, animated: false)
         }
     }
 }

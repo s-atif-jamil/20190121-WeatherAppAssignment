@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +31,7 @@
         <!--Home View Controller-->
         <scene sceneID="b0f-6C-doZ">
             <objects>
-                <viewController id="VB4-kt-xdA" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VB4-kt-xdA" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jpY-uj-TQs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +188,7 @@
         <!--City View Controller-->
         <scene sceneID="5f8-hB-HsJ">
             <objects>
-                <viewController id="W4R-mv-RBM" userLabel="City View Controller" customClass="CityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="W4R-mv-RBM" userLabel="City View Controller" customClass="CityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T3T-kW-FHB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,26 +466,22 @@
         <!--Help-->
         <scene sceneID="WlJ-ol-54g">
             <objects>
-                <viewController id="kaq-mr-sx8" customClass="HelpViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="kaq-mr-sx8" customClass="HelpViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QrW-1A-Ijc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NJ-am-kNp">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4od-BF-4gv">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5NJ-am-kNp" firstAttribute="trailing" secondItem="XR1-zz-iSx" secondAttribute="trailing" id="6Eg-aX-G6x"/>
-                            <constraint firstItem="5NJ-am-kNp" firstAttribute="leading" secondItem="XR1-zz-iSx" secondAttribute="leading" id="NK7-0Y-6oR"/>
-                            <constraint firstItem="XR1-zz-iSx" firstAttribute="bottom" secondItem="5NJ-am-kNp" secondAttribute="bottom" id="vLi-Cu-YQE"/>
-                            <constraint firstItem="5NJ-am-kNp" firstAttribute="top" secondItem="XR1-zz-iSx" secondAttribute="top" id="wan-AV-pWa"/>
+                            <constraint firstItem="XR1-zz-iSx" firstAttribute="bottom" secondItem="4od-BF-4gv" secondAttribute="bottom" id="4yd-lF-89Z"/>
+                            <constraint firstItem="4od-BF-4gv" firstAttribute="leading" secondItem="XR1-zz-iSx" secondAttribute="leading" id="jI2-Gx-qOb"/>
+                            <constraint firstItem="4od-BF-4gv" firstAttribute="top" secondItem="XR1-zz-iSx" secondAttribute="top" id="ofd-9t-w9H"/>
+                            <constraint firstItem="XR1-zz-iSx" firstAttribute="trailing" secondItem="4od-BF-4gv" secondAttribute="trailing" id="v7h-xu-s3H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XR1-zz-iSx"/>
                     </view>
@@ -498,7 +493,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webView" destination="5NJ-am-kNp" id="Bc6-FR-zwg"/>
+                        <outlet property="containerView" destination="4od-BF-4gv" id="pSn-H9-llA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBX-SL-xwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,7 +519,7 @@
         <!--Settings-->
         <scene sceneID="D9E-pd-nA3">
             <objects>
-                <viewController id="tCA-7B-DwG" customClass="SettingsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tCA-7B-DwG" customClass="SettingsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Yf-FT-15G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,7 +786,7 @@
         <!--Add City-->
         <scene sceneID="gI2-cJ-0vf">
             <objects>
-                <viewController id="C81-hL-OKK" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="C81-hL-OKK" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pTB-6w-Na6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

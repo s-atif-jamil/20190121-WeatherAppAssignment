@@ -34,6 +34,7 @@ class CityViewController: BaseViewController {
         
         let offsetX = size.width * CGFloat(round(collectionView.contentOffset.x / collectionView.contentSize.width))
         coordinator.animate(alongsideTransition: nil) { _ in
+            self.collectionView.reloadData()
             self.collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: false)
         }
     }
