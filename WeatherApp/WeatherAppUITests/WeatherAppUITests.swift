@@ -26,9 +26,19 @@ class WeatherAppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testDeleteAllBookmarkCities() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        let weatherappHomeviewNavigationBar = app.navigationBars["WeatherApp.HomeView"]
+        weatherappHomeviewNavigationBar.children(matching: .button).element(boundBy: 2).tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["Delete all Cities"].tap()
+        app.alerts["Confirm"].buttons["Yes"].tap()
+        elementsQuery.buttons["Metric (celsius, meter/sec) "].tap()
+        app.navigationBars["Settings"].children(matching: .button).element.tap()
     }
 
 }

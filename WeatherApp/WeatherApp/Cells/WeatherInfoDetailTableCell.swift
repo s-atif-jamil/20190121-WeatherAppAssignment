@@ -10,15 +10,24 @@ import UIKit
 
 class WeatherInfoDetailTableCell: BaseTableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet var timeInfoLabel: UILabel!
+    @IBOutlet var weatherInfoLabel: UILabel!
+    @IBOutlet var humidityInfoLabel: UILabel!
+    @IBOutlet var rainInfoLabel: UILabel!
+    @IBOutlet var windInfoLabel: UILabel!
+    @IBOutlet var tempratureLabel: UILabel!
+    @IBOutlet var weathreImageView: UIImageView!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var model: ForecastDetail! {
+        didSet {
+            self.timeInfoLabel.text = model.timeInfo
+            self.weatherInfoLabel.text = model.weatherInfo
+            self.rainInfoLabel.text = model.rainInfo
+            self.windInfoLabel.text = model.windInfo
+            self.humidityInfoLabel.text = String(format: "Humidity: %.0f%%", model.humidity)
+            self.tempratureLabel.text = String(format: "%.0f°", model.temprature)
+            self.weathreImageView.downloaded(from: model.imageLink, placeholder: UIImage(named: "Placeholder"))
+        }
     }
 
 }

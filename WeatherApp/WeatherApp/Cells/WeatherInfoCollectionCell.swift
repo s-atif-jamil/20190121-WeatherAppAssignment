@@ -10,16 +10,28 @@ import UIKit
 
 class WeatherInfoCollectionCell: BaseCollectionViewCell {
     
+    @IBOutlet var dateInfoLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
+    var model: ForecastGroup! {
+        didSet {
+            self.dateInfoLabel.text = model.dateInfo
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 extension WeatherInfoCollectionCell: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return model?.details.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: WeatherInfoDetailTableCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherInfoDetailTableCell.identifier, for: indexPath) as! WeatherInfoDetailTableCell
+        cell.model = model.details[indexPath.row]
+        return cell
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import WeatherApp
 
 class WeatherAppTests: XCTestCase {
@@ -19,16 +20,65 @@ class WeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+ 
+    // Test London current weather forecst by coordinate.
+    // Expecation:  Error must be nil
+    //              City name must be "London, GB"
+    func testLondonCurrentWeather() {
+        // Define an expectation
+        let apiExpectation = XCTestExpectation(description: "Test current Weather of London")
+
+        let city = City("<Fill from Api>", 51.51, -0.13)
+
+        // Calling Api
+        ApiManager.requestTodayForcast(city: city) { (city, error) in
+            XCTAssertNil(error)
+            XCTAssertTrue(city?.name == "London, GB")
+            apiExpectation.fulfill()
+        }
+        
+        // Wait for the expectation to be fulfilled
+        wait(for: [apiExpectation], timeout: 60.0)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+    // Test London current weather forecst by string.
+    // Expecation:  Error must be nil
+    //              City name must be "London, GB"
+    func testLondonCurrentWeatherByString() {
+        // Define an expectation
+        let apiExpectation = XCTestExpectation(description: "Test current Weather of London")
+        
+        // Calling Api
+        ApiManager.requestTodayForcast(query: "London") { (city, error) in
+            XCTAssertNil(error)
+            XCTAssertTrue(city?.name == "London, GB")
+            apiExpectation.fulfill()
         }
+        
+        // Wait for the expectation to be fulfilled
+        wait(for: [apiExpectation], timeout: 60.0)
+    }
+    
+
+    // Test London 5 days weather forecst.
+    // Expecation:  Error must be nil
+    //              City forecast group count must be 5
+    func testLondonForecastWeather() {
+        // Define an expectation
+        let apiExpectation = XCTestExpectation(description: "Test current Weather of London")
+        
+        let city = City("London, GB", 51.51, -0.13)
+
+        // Calling Api
+        ApiManager.request5DaysForcast(city: city) { (city, error) in
+            XCTAssertNil(error)
+            XCTAssertTrue(city?.forecast.count == 5)
+            apiExpectation.fulfill()
+        }
+        
+        // Wait for the expectation to be fulfilled
+        wait(for: [apiExpectation], timeout: 60.0)
     }
 
 }
